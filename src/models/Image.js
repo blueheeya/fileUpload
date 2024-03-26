@@ -7,8 +7,8 @@ const ImageSchema = mongoose.Schema({
     // originalFileName:{type:String,required:true} //images로 합체!
     images:[
         {
-         originalFileName:{type:String,required:true},
-         filename:{type:String,required:true}
+         originalFileName:{type:String},
+         filename:{type:String}
         }    
     ]
 },{timestemps:true})

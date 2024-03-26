@@ -8,6 +8,7 @@ const dotenv = require("dotenv");
 // const mime = require("mime-types");
 // const {upload} = require("./middlewares/imageUpload"); //image Router로 빼냄
 const { imageRouter } = require("./routes/imageRouter");
+const { userRouter } = require("./routes/userRouter");
 
 
 dotenv.config();
@@ -22,7 +23,8 @@ const server = async function () {
       await mongoose.connect(process.env.MONGO_URL);
       console.log("db연결됨");
       app.use(express.json());
-      app.use("/upload",imageRouter)
+      app.use("/upload",imageRouter);
+      app.use("/User",userRouter);
       
   
       app.listen(3000);
