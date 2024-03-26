@@ -6,7 +6,8 @@ const dotenv = require("dotenv");
 // const multer = require("multer");
 // const {v4: uuid} = require("uuid");
 // const mime = require("mime-types");
-const {upload} = require("./middlewares/imageUpload")
+// const {upload} = require("./middlewares/imageUpload"); //image Router로 빼냄
+const { imageRouter } = require("./routes/imageRouter");
 
 
 dotenv.config();
@@ -21,15 +22,8 @@ const server = async function () {
       await mongoose.connect(process.env.MONGO_URL);
       console.log("db연결됨");
       app.use(express.json());
-  
-      app.post("/upload", upload.single("image"), async function (req, res) {
-        try {
-          console.log(req.file);
-          return res.send(req.file);
-        } catch (error) {
-          return res.status(500).send({error: error.message});
-        }
-      });
+      app.use("/upload",imageRouter)
+      
   
       app.listen(3000);
     } catch (error) {
