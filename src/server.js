@@ -24,7 +24,7 @@ const server = async function () {
       console.log("db연결됨");
       app.use(express.json());
       app.use("/upload",imageRouter);
-      app.use("/User",userRouter);
+      app.use("/user",userRouter);
       
   
       app.listen(3000);
