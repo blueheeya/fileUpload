@@ -4,7 +4,6 @@ const express = require("express");
 const userRouter = express.Router();
 const {hash,compare} = require("bcryptjs");
 const { upload } = require("../middlewares/imageUpload");
-// const {Image} = require("../models/Image")
 
 userRouter.get("/member", async function(req,res){
     try {
